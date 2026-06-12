@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>model-ocr | Local OCR Service</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Local OCR Service</p>
+          <h1>Extract text from images and PDFs instantly.</h1>
+          <p class="subtitle">
+            Upload a file or paste raw content, then review the extracted text in a clean, responsive interface.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <p class="hero-panel__title">Service status</p>
+          <div id="service-status" class="status-pill">Checking status...</div>
+        </div>
+      </header>
+
+      <main>
+        <section class="grid-layout">
+          <div class="card panel">
+            <div class="panel-header">
+              <div>
+                <h2>Upload file</h2>
+                <p>Accepted formats: images and PDFs.</p>
+              </div>
+            </div>
+            <form id="ocr-form" class="form-stack">
+              <label class="field-label" for="file">Select an image or PDF</label>
+              <input type="file" id="file" name="file" accept="image/*,.pdf" />
+              <button type="submit" class="primary-button">Extract text</button>
+            </form>
+          </div>
+
+          <div class="card panel panel-secondary">
+            <div class="panel-header">
+              <div>
+                <h2>Paste raw text</h2>
+                <p>Submit text directly for quick extraction or later processing.</p>
+              </div>
+            </div>
+            <form id="text-form" class="form-stack">
+              <label class="field-label" for="text">Raw text</label>
+              <textarea id="text" name="text" rows="7" placeholder="Paste text here..."></textarea>
+              <button type="submit" class="secondary-button">Submit text</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="card result-card">
+          <div class="result-header">
+            <div>
+              <h2>Extracted text</h2>
+              <p>Results appear here after extraction.</p>
+            </div>
+            <div class="control-group">
+              <button id="copy-output" class="muted-button">Copy</button>
+              <button id="clear-output" class="muted-button">Clear</button>
+            </div>
+          </div>
+          <div id="result-status" class="result-status">No extraction performed yet.</div>
+          <pre id="result-output" class="result-output" aria-live="polite"></pre>
+        </section>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
